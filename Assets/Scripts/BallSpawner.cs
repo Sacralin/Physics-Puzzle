@@ -16,6 +16,6 @@ public class BallSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ball.transform.position.y >)
+        //if(ball.transform.position.y >)
     }
 }
