@@ -44,4 +44,6 @@ public class OpenMazeDoor : MonoBehaviour
             currentDoorPosition = targetDoorPosition;
         }
     }
+
+   
 }
