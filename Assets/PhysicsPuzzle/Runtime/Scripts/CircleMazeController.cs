@@ -6,28 +6,29 @@ using UnityEngine;
 public class CircleMazeController : MonoBehaviour
 {
     float currentAngle = 0;
+    public float rotationSpeed = 0.5f;
+    public PuzzleInputs inputActions;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputActions = new PuzzleInputs();
+        inputActions.PuzzleControls.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float zInput = Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.A))
+
+        if (inputActions.PuzzleControls.RotateCounterClockwise.ReadValue<float>() > 0)
         {
-            currentAngle += 0.5f;
+            currentAngle += rotationSpeed;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (inputActions.PuzzleControls.RotateClockwise.ReadValue<float>() > 0)
         {
-            currentAngle -= 0.5f;
+            currentAngle -= rotationSpeed;
         }
 
-        float number = currentAngle + zInput; 
-        //transform.rotation = Quaternion.Euler(90, transform.rotation.y, transform.rotation.z + zInput);
         transform.localEulerAngles = new Vector3(0f, 0f, currentAngle);
 
     }
